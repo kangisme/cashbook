@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_one"
+            android:icon="@drawable/menu_wallpager"
+            android:title="壁纸"
+            tools:ignore="HardcodedText"/>
+        <item
+            android:id="@+id/item_two"
+            android:icon="@drawable/menu_setting"
+            android:title="设置"
+            tools:ignore="HardcodedText"/>
+    </group>
+</menu>

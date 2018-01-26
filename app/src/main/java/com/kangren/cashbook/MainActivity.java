@@ -3,15 +3,26 @@ package com.kangren.cashbook;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.orhanobut.logger.Logger;
+
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener
 {
+    private long lastBackPressed;
 
     private List<TabFragment> tabFragments;
 
@@ -21,11 +32,52 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     private FragmentPagerAdapter adapter;
 
+    private Toolbar toolbar;
+
+    private DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initData();
+        initView();
+    }
+
+    private void initView()
+    {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.draw_layout);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.drawer_open, R.string.drawer_close);
+        drawerToggle.syncState();// 初始化状态
+        drawerLayout.setDrawerListener(drawerToggle);
+
+        // 设置导航栏NavigationView的点击事件
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem)
+            {
+                switch (menuItem.getItemId())
+                {
+                    case R.id.item_one:
+                        toolbar.setTitle("壁纸");
+                        break;
+                    case R.id.item_two:
+                        toolbar.setTitle("设置");
+                        break;
+                }
+                menuItem.setChecked(true);// 点击了把它设为选中状态
+                drawerLayout.closeDrawers();// 关闭抽屉
+                return true;
+            }
+        });
+
         viewPager = (ViewPager) findViewById(R.id.id_viewpager);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(this);
@@ -158,4 +210,19 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        long current = SystemClock.elapsedRealtime();
+        Logger.d(current);
+        if (current - lastBackPressed < 2000)
+        {
+            super.onBackPressed();
+        }
+        else
+        {
+            lastBackPressed = current;
+            Toast.makeText(MainActivity.this, "再次返回退出应用", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

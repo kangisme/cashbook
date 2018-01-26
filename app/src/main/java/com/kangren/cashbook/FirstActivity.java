@@ -1,8 +1,8 @@
 package com.kangren.cashbook;
 
-import com.kangren.cashbook.util.JumpUtil;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 public class FirstActivity extends BaseActivity
 {
@@ -12,6 +12,21 @@ public class FirstActivity extends BaseActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-        JumpUtil.jumpActivity(this, MainActivity.class);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                startActivity(new Intent(FirstActivity.this, MainActivity.class));
+                finish();
+            }
+        }, 1000);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        // FirstActivity禁用Back回退键
     }
 }
