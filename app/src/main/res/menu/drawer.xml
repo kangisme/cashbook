@@ -8,6 +8,11 @@
             android:title="壁纸"
             tools:ignore="HardcodedText"/>
         <item
+            android:id="@+id/item_three"
+            android:icon="@mipmap/menu_wechat"
+            android:title="微信"
+            tools:ignore="HardcodedText"/>
+        <item
             android:id="@+id/item_two"
             android:icon="@drawable/menu_setting"
             android:title="设置"

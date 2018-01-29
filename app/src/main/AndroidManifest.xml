@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.kangren.cashbook">
 
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -17,7 +20,29 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask">
+
+        </activity>
+
+        <!--侧滑菜单->壁纸-->
+        <activity android:name=".wallpaper.WallpaperActivity">
+
+        </activity>
+
+        <!--侧滑菜单->壁纸->预览-->
+        <activity android:name=".wallpaper.PreviewActivity">
+
+        </activity>
+
+        <!--侧滑菜单->微信-->
+        <activity android:name=".wechat.WechatActivity">
+
+        </activity>
+
+        <!--侧滑菜单->设置-->
+        <activity android:name=".setting.SettingActivity">
 
         </activity>
     </application>
