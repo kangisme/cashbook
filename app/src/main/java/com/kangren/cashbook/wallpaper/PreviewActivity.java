@@ -2,6 +2,8 @@ package com.kangren.cashbook.wallpaper;
 
 import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.R;
+import com.kangren.cashbook.view.TitleBar;
+import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
 
 import android.content.Intent;
@@ -15,8 +17,14 @@ import android.widget.ImageView;
 
 public class PreviewActivity extends BaseActivity
 {
+    /**
+     * 标题栏高度44dp
+     */
+    private final int TITLEBAR_HEIGHT = 44;
 
     private ImageView preview;
+
+    private TitleBar titleBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,11 +33,15 @@ public class PreviewActivity extends BaseActivity
         setContentView(R.layout.activity_preview);
 
         preview = (ImageView) findViewById(R.id.preview_img);
+        titleBar = (TitleBar) findViewById(R.id.preview_titlebar);
         Intent date = getIntent();
         if (date != null)
         {
+            int height = getResources().getDisplayMetrics().heightPixels - titleBar.getHeight();
+            int width = getResources().getDisplayMetrics().widthPixels;
+            Logger.e("width: " + width + "height: " + height + "titlebar: " + titleBar.getHeight());
             Uri fullPhotoUri = date.getData();
-            Picasso.with(PreviewActivity.this).load(fullPhotoUri).into(preview);
+            Picasso.with(PreviewActivity.this).load(fullPhotoUri).resize(width, height).into(preview);
         }
     }
 

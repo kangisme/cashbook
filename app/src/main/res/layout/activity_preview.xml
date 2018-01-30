@@ -7,6 +7,7 @@
               tools:ignore="HardcodedText">
 
     <com.kangren.cashbook.view.TitleBar
+        android:id="@+id/preview_titlebar"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:text="预览">
@@ -16,5 +17,6 @@
         android:id="@+id/preview_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="5dp"
         android:contentDescription="@null"/>
 </LinearLayout>

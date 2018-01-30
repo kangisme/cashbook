@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -38,8 +39,9 @@ public class WallpaperActivity extends BaseActivity
     private void initView()
     {
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
-        recyclerView.setLayoutManager(new GridLayoutManager(WallpaperActivity.this, 3));
-        recyclerView.setAdapter(new SelectAdapter());
+        GridLayoutManager glm = new GridLayoutManager(WallpaperActivity.this, 3);
+        recyclerView.setLayoutManager(glm);
+        recyclerView.setAdapter(new SelectAdapter(wallpapers, glm));
 
         findViewById(R.id.select).setOnClickListener(new View.OnClickListener()
         {
@@ -68,11 +70,20 @@ public class WallpaperActivity extends BaseActivity
 
     private class SelectAdapter extends RecyclerView.Adapter<ViewHolder>
     {
+        private int[] mWallPapers;
+
+        private GridLayoutManager manager;
+
+        public SelectAdapter(int[] wallPapers, GridLayoutManager glm)
+        {
+            mWallPapers = wallPapers;
+            manager = glm;
+        }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
         {
-            View itemView = View.inflate(WallpaperActivity.this, R.layout.recycler_item, null);
+            View itemView = LayoutInflater.from(WallpaperActivity.this).inflate(R.layout.recycler_item, parent, false);
             return new ViewHolder(itemView);
         }
 
@@ -80,12 +91,16 @@ public class WallpaperActivity extends BaseActivity
         public void onBindViewHolder(ViewHolder holder, int position)
         {
             holder.imageView.setImageResource(wallpapers[position]);
+            ViewGroup.LayoutParams layoutParams = holder.imageView.getLayoutParams();
+            int width = manager.getWidth() / manager.getSpanCount()
+                    - 2 * ((ViewGroup.MarginLayoutParams) layoutParams).leftMargin;
+            layoutParams.height = width * 5 / 3;
         }
 
         @Override
         public int getItemCount()
         {
-            return wallpapers.length;
+            return mWallPapers.length;
         }
     }
 }
