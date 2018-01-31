@@ -2,6 +2,7 @@ package com.kangren.cashbook.wallpaper;
 
 import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.R;
+import com.kangren.cashbook.util.Utils;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -41,7 +42,17 @@ public class WallpaperActivity extends BaseActivity
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         GridLayoutManager glm = new GridLayoutManager(WallpaperActivity.this, 3);
         recyclerView.setLayoutManager(glm);
-        recyclerView.setAdapter(new SelectAdapter(wallpapers, glm));
+        recyclerView.setAdapter(new SelectAdapter(wallpapers, glm, new ClickListener()
+        {
+            @Override
+            public void onImageClick(int position)
+            {
+                Intent intent = new Intent(WallpaperActivity.this, PreviewActivity.class);
+                Uri uri = Utils.resourceIdToUri(WallpaperActivity.this, wallpapers[position]);
+                intent.setData(uri);
+                startActivity(intent);
+            }
+        }));
 
         findViewById(R.id.select).setOnClickListener(new View.OnClickListener()
         {
@@ -74,10 +85,13 @@ public class WallpaperActivity extends BaseActivity
 
         private GridLayoutManager manager;
 
-        public SelectAdapter(int[] wallPapers, GridLayoutManager glm)
+        private ClickListener clickListener;
+
+        public SelectAdapter(int[] wallPapers, GridLayoutManager glm, ClickListener listener)
         {
             mWallPapers = wallPapers;
             manager = glm;
+            clickListener = listener;
         }
 
         @Override
@@ -88,13 +102,24 @@ public class WallpaperActivity extends BaseActivity
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position)
+        public void onBindViewHolder(ViewHolder holder, final int position)
         {
             holder.imageView.setImageResource(wallpapers[position]);
             ViewGroup.LayoutParams layoutParams = holder.imageView.getLayoutParams();
             int width = manager.getWidth() / manager.getSpanCount()
                     - 2 * ((ViewGroup.MarginLayoutParams) layoutParams).leftMargin;
             layoutParams.height = width * 5 / 3;
+            if (clickListener != null)
+            {
+                holder.imageView.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        clickListener.onImageClick(position);
+                    }
+                });
+            }
         }
 
         @Override

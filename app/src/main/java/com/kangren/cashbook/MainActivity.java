@@ -6,6 +6,7 @@ import com.kangren.cashbook.wallpaper.WallpaperActivity;
 import com.kangren.cashbook.wechat.WechatActivity;
 import com.orhanobut.logger.Logger;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -14,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends BaseActivity
@@ -23,6 +25,11 @@ public class MainActivity extends BaseActivity
     private Toolbar toolbar;
 
     private DrawerLayout drawerLayout;
+
+    /**
+     * 设置壁纸
+     */
+    private LinearLayout themeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +44,15 @@ public class MainActivity extends BaseActivity
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
+        // 设置壁纸
+        themeLayout = (LinearLayout) findViewById(R.id.theme_layout);
+        setWallpaper();
+
         drawerLayout = (DrawerLayout) findViewById(R.id.draw_layout);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.drawer_open, R.string.drawer_close);
-        drawerToggle.syncState();// 初始化状态
+        // 初始化状态
+        drawerToggle.syncState();
         drawerLayout.addDrawerListener(drawerToggle);
 
         // 设置导航栏NavigationView的点击事件
@@ -66,6 +78,19 @@ public class MainActivity extends BaseActivity
                 return true;
             }
         });
+    }
+
+    private void setWallpaper()
+    {
+
+        themeLayout.setBackgroundResource(R.mipmap.bg_overcast);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent)
+    {
+        super.onNewIntent(intent);
+        setWallpaper();
     }
 
     @Override
