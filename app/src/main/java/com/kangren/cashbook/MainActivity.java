@@ -1,13 +1,18 @@
 package com.kangren.cashbook;
 
+import java.io.File;
+
 import com.kangren.cashbook.setting.SettingActivity;
 import com.kangren.cashbook.util.JumpUtil;
+import com.kangren.cashbook.util.Utils;
 import com.kangren.cashbook.wallpaper.WallpaperActivity;
 import com.kangren.cashbook.wechat.WechatActivity;
 import com.orhanobut.logger.Logger;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.NavigationView;
@@ -29,7 +34,7 @@ public class MainActivity extends BaseActivity
     /**
      * 设置壁纸
      */
-    private LinearLayout themeLayout;
+    private LinearLayout paperLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +50,7 @@ public class MainActivity extends BaseActivity
         setSupportActionBar(toolbar);
 
         // 设置壁纸
-        themeLayout = (LinearLayout) findViewById(R.id.theme_layout);
+        paperLayout = (LinearLayout) findViewById(R.id.theme_layout);
         setWallpaper();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.draw_layout);
@@ -82,8 +87,10 @@ public class MainActivity extends BaseActivity
 
     private void setWallpaper()
     {
-
-        themeLayout.setBackgroundResource(R.mipmap.bg_overcast);
+        String path = getFilesDir().getPath() + "/" + BuildConfig.WALLPAPER_FILE;
+        File file = new File(path);
+        Uri uri = Utils.fileToUri(this, file);
+        paperLayout.setBackground(Drawable.createFromPath(path));
     }
 
     @Override

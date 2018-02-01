@@ -2,7 +2,6 @@ package com.kangren.cashbook.wallpaper;
 
 import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.R;
-import com.kangren.cashbook.util.Utils;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -48,8 +47,7 @@ public class WallpaperActivity extends BaseActivity
             public void onImageClick(int position)
             {
                 Intent intent = new Intent(WallpaperActivity.this, PreviewActivity.class);
-                Uri uri = Utils.resourceIdToUri(WallpaperActivity.this, wallpapers[position]);
-                intent.setData(uri);
+                intent.putExtra("wallpaper", wallpapers[position]);
                 startActivity(intent);
             }
         }));

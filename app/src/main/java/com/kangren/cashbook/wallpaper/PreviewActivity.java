@@ -1,8 +1,11 @@
 package com.kangren.cashbook.wallpaper;
 
 import com.kangren.cashbook.BaseActivity;
+import com.kangren.cashbook.MainActivity;
 import com.kangren.cashbook.R;
+import com.kangren.cashbook.util.JumpUtil;
 import com.kangren.cashbook.util.ScreenUtil;
+import com.kangren.cashbook.util.Utils;
 import com.kangren.cashbook.view.TitleBar;
 import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
@@ -23,7 +26,13 @@ public class PreviewActivity extends BaseActivity
     /**
      * 标题栏高度44dp
      */
-    private final int TITLEBAR_HEIGHT = 44;
+    private static final int TITLEBAR_HEIGHT = 44;
+
+    private boolean isResourceId;
+
+    private int resourceId;
+
+    private Uri imgUri;
 
     private ImageView preview;
 
@@ -45,19 +54,71 @@ public class PreviewActivity extends BaseActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(PreviewActivity.this, "使用", Toast.LENGTH_SHORT).show();
+                if (isResourceId)
+                {
+                    if (resourceId != 0)
+                    {
+                        Utils.resourceIdSaveFile(PreviewActivity.this, resourceId);
+                    }
+                    else
+                    {
+                        Toast.makeText(PreviewActivity.this, "设置失败", Toast.LENGTH_SHORT).show();
+                    }
+                    JumpUtil.jumpActivity(PreviewActivity.this, MainActivity.class);
+                }
+                else
+                {
+                    if (imgUri != null)
+                    {
+                        Utils.uriSaveFile(PreviewActivity.this, imgUri);
+                    }
+                    else
+                    {
+                        Toast.makeText(PreviewActivity.this, "设置失败", Toast.LENGTH_SHORT).show();
+                    }
+                    JumpUtil.jumpActivity(PreviewActivity.this, MainActivity.class);
+                }
             }
         });
-        Intent date = getIntent();
-        if (date != null)
+        handleIntent();
+    }
+
+    /**
+     * 处理传递来的Intent
+     */
+    private void handleIntent()
+    {
+        Intent data = getIntent();
+        if (data != null)
         {
             int height = (int) (screenUtil.getScreenHeight() - screenUtil.getStatusHeight()
                     - TITLEBAR_HEIGHT * screenUtil.getDensity());
             int width = screenUtil.getWidth();
             Logger.e(
                     "width: " + width + "height: " + height + "titlebar :" + TITLEBAR_HEIGHT * screenUtil.getDensity());
-            Uri fullPhotoUri = date.getData();
-            Picasso.with(PreviewActivity.this).load(fullPhotoUri).resize(width, height).into(preview);
+            // 从相册打开图片传递Uri
+            Uri fullPhotoUri = data.getData();
+            if (fullPhotoUri != null)
+            {
+                Picasso.with(PreviewActivity.this).load(fullPhotoUri).resize(width, height).into(preview);
+                imgUri = fullPhotoUri;
+                isResourceId = false;
+            }
+            else
+            {
+                // 软件自带的壁纸预览传递的resource ID
+                int id = data.getIntExtra("wallpaper", 0);
+                if (id == 0)
+                {
+                    Logger.e("error: intent has no resource id");
+                }
+                else
+                {
+                    Picasso.with(PreviewActivity.this).load(id).resize(width, height).into(preview);
+                    resourceId = id;
+                    isResourceId = true;
+                }
+            }
         }
     }
 

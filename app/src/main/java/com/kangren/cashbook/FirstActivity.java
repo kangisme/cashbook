@@ -1,6 +1,7 @@
 package com.kangren.cashbook;
 
 import com.kangren.cashbook.util.PreferencesUtil;
+import com.kangren.cashbook.util.Utils;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ public class FirstActivity extends BaseActivity
         if (PreferencesUtil.isFirstEnter(this))
         {
             // 第一次进入配置
-
+            Utils.resourceIdSaveFile(this, R.mipmap.wallpaper_2);
             PreferencesUtil.setFirstEnter(this);
         }
         Handler handler = new Handler();
