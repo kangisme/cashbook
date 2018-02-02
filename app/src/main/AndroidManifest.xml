@@ -26,6 +26,11 @@
 
         </activity>
 
+        <!--侧滑菜单->登录-->
+        <activity android:name=".login.LoginActivity">
+
+        </activity>
+
         <!--侧滑菜单->壁纸-->
         <activity android:name=".wallpaper.WallpaperActivity">
 

@@ -2,6 +2,7 @@ package com.kangren.cashbook;
 
 import java.io.File;
 
+import com.kangren.cashbook.login.LoginActivity;
 import com.kangren.cashbook.setting.SettingActivity;
 import com.kangren.cashbook.util.JumpUtil;
 import com.kangren.cashbook.util.Utils;
@@ -20,6 +21,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -81,6 +84,16 @@ public class MainActivity extends BaseActivity
                 }
                 drawerLayout.closeDrawers();// 关闭抽屉
                 return true;
+            }
+        });
+        View headerView = mNavigationView.getHeaderView(0);
+        ImageView headerLogo = (ImageView) headerView.findViewById(R.id.header_logo);
+        headerLogo.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                JumpUtil.jumpActivity(MainActivity.this, LoginActivity.class);
             }
         });
     }

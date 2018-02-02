@@ -9,7 +9,7 @@
     <com.kangren.cashbook.view.TitleBar
         android:id="@+id/preview_titlebar"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="@dimen/titlebar_height"
         android:text="预览">
     </com.kangren.cashbook.view.TitleBar>
 

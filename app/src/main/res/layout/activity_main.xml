@@ -29,7 +29,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="内容区域"
-                android:textSize="30dp"/>
+                android:textSize="@dimen/font_large_22"/>
         </LinearLayout>
     </LinearLayout>
 

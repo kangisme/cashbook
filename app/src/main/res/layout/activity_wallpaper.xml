@@ -27,7 +27,8 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="10dp"
-            android:text="从手机相册中选择"/>
+            android:text="从手机相册中选择"
+            android:textSize="@dimen/font_small"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -45,7 +46,8 @@
         android:layout_marginTop="10dp"
         android:background="@color/white"
         android:paddingStart="10dp"
-        android:text="选择壁纸"/>
+        android:text="选择壁纸"
+        android:textSize="@dimen/font_small"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"

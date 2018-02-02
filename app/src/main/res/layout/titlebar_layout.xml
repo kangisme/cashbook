@@ -20,7 +20,7 @@
         android:paddingStart="8dp"
         android:text="返回"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="@dimen/font_small"
         />
 
 
@@ -38,7 +38,7 @@
         android:singleLine="true"
         android:text="@string/app_name"
         android:textColor="@color/white"
-        android:textSize="18dp"/>
+        android:textSize="@dimen/font_middle"/>
 
     <TextView
         android:id="@+id/header_extra"
@@ -49,7 +49,7 @@
         android:layout_marginEnd="10dp"
         android:text="使用"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="@dimen/font_small"
         android:visibility="gone"
         />
 </merge>

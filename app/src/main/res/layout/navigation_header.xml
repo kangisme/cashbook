@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="#30469b">
+                android:background="#30469b"
+                tools:ignore="HardCodedText">
 
     <ImageView
         android:id="@+id/header_logo"
@@ -22,5 +24,5 @@
         android:layout_marginTop="10dp"
         android:text="登录"
         android:textColor="#ffff0000"
-        android:textSize="22sp"/>
+        android:textSize="@dimen/font_large_22"/>
 </RelativeLayout>
