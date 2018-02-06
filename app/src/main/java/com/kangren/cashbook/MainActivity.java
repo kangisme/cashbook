@@ -2,6 +2,7 @@ package com.kangren.cashbook;
 
 import java.io.File;
 
+import com.kang.cashbook.skin.Skin;
 import com.kangren.cashbook.login.LoginActivity;
 import com.kangren.cashbook.setting.SettingActivity;
 import com.kangren.cashbook.util.JumpUtil;
@@ -24,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends BaseActivity
@@ -39,6 +41,8 @@ public class MainActivity extends BaseActivity
      */
     private LinearLayout paperLayout;
 
+    private TextView textContent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,8 @@ public class MainActivity extends BaseActivity
 
     private void initView()
     {
+        textContent = (TextView) findViewById(R.id.text_content);
+        textContent.setText(Skin.SKIN_STRING);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
