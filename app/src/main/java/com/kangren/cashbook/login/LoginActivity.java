@@ -2,6 +2,7 @@ package com.kangren.cashbook.login;
 
 import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.R;
+import com.kangren.cashbook.util.JumpUtil;
 import com.kangren.cashbook.view.TitleBar;
 
 import android.os.Bundle;
@@ -40,7 +41,7 @@ public class LoginActivity extends BaseActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(LoginActivity.this, "注册", Toast.LENGTH_SHORT).show();
+                JumpUtil.jumpActivity(LoginActivity.this, SignupActivity.class);
             }
         });
     }

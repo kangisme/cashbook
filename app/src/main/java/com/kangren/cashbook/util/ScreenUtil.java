@@ -13,6 +13,8 @@ public class ScreenUtil
 {
     private static ScreenUtil screenUtil = null;
 
+    private Context mContext;
+
     private float density;
 
     private int width;
@@ -23,6 +25,7 @@ public class ScreenUtil
 
     private ScreenUtil(Context context)
     {
+        mContext = context;
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         density = displayMetrics.density;
         width = displayMetrics.widthPixels;

@@ -7,6 +7,7 @@ import android.content.res.Resources;
 
 /**
  * 虚拟按键工具类，目前仅测试华为手机 Created by kangren on 2018/1/31.
+ * 获取当前屏幕是否存在虚拟按键，以及其高度，因此不能放入{@link ScreenUtil}中
  */
 
 public class VirtualButtonUtil
@@ -14,8 +15,8 @@ public class VirtualButtonUtil
     /**
      * 获取虚拟键的高度
      * 
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return 高度
      */
     public static int getNavigationBarHeight(Context context)
     {
@@ -35,8 +36,8 @@ public class VirtualButtonUtil
     /**
      * 判断是否有虚拟键
      * 
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return 布尔值
      */
     public static boolean hasNavBar(Context context)
     {

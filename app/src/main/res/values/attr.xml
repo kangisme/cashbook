@@ -8,4 +8,13 @@
         <attr name="text_size" format="dimension"/>
     </declare-styleable>
 
+
+    <declare-styleable name="VerifyCodeView">
+        <attr name="codeTextSize" format="dimension"/>
+        <attr name="codeBackground" format="color"/>
+        <attr name="codeLength" format="integer"/>
+        <attr name="isContainChar" format="boolean"/>
+        <attr name="pointNum" format="integer"/>
+        <attr name="lineNum" format="integer"/>
+    </declare-styleable>
 </resources>
