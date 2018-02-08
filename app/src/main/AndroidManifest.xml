@@ -31,7 +31,7 @@
 
         </activity>
 
-        <activity android:name=".login.SignupActivity">
+        <activity android:name=".login.SignActivity">
 
         </activity>
 
@@ -42,6 +42,11 @@
 
         <!--侧滑菜单->壁纸->预览-->
         <activity android:name=".wallpaper.PreviewActivity">
+
+        </activity>
+
+        <!--侧滑菜单->皮肤商城-->
+        <activity android:name=".skin.SkinActivity">
 
         </activity>
 

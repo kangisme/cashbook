@@ -5,4 +5,7 @@
     <dimen name="font_middle">18dp</dimen>
     <dimen name="font_large">20dp</dimen>
     <dimen name="font_large_22">22dp</dimen>
+
+    <!--module dimens-->
+    <dimen name="module_divider">8dp</dimen>
 </resources>

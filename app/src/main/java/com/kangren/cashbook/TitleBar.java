@@ -1,12 +1,10 @@
-package com.kangren.cashbook.view;
+package com.kangren.cashbook;
 
-import com.kangren.cashbook.R;
 import com.orhanobut.logger.Logger;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -42,7 +40,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener
     public TitleBar(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
-        setBackgroundColor(Color.parseColor("#AAFA0000"));
+        setBackgroundColor(getResources().getColor(R.color.titlebar_bg));
         LayoutInflater.from(context).inflate(R.layout.titlebar_layout, this, true);
 
         mTitle = (TextView) findViewById(R.id.header_title);

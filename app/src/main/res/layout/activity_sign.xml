@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:ignore="SpUsage,HardcodedText">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <com.kangren.cashbook.TitleBar
-        android:id="@+id/login_titlebar"
+        android:id="@+id/signup_titlebar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height"
-        android:text="登录">
-
+        android:text="注册">
     </com.kangren.cashbook.TitleBar>
 
     <LinearLayout
@@ -46,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/user_name"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="50dp"
         android:orientation="horizontal">
 
@@ -55,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="80dp"
-            android:text="密码"
+            android:text="密     码"
             android:textSize="@dimen/font_middle"/>
 
         <EditText
@@ -69,38 +67,53 @@
             android:singleLine="true"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/forget_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/user_password"
-        android:layout_marginEnd="@dimen/font_large_22"
-        android:drawableRight="@mipmap/forget_password_arrow"
-        android:text="忘记密码"
-        android:textColor="@color/blue_link"/>
+    <LinearLayout
+        android:id="@+id/verify_code"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/user_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="80dp"
+            android:text="验证码"
+            android:textSize="@dimen/font_middle"/>
+
+        <com.kangren.cashbook.login.VerifyCodeView
+            android:id="@+id/verify_code_view"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"/>
+
+        <EditText
+            android:id="@+id/verify_code_e"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:minWidth="100dp"
+            android:singleLine="true"/>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/forget_password"
+        android:layout_below="@id/verify_code"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:height="45dp"
         android:background="@drawable/blue_round_bg"
         android:gravity="center"
         android:minWidth="300dp"
-        android:text="登录"
+        android:text="注册"
         android:textColor="@color/white_font"
         android:textSize="@dimen/font_large"/>
 
 
-    <include
-        android:id="@+id/process_bar"
-        layout="@layout/progress_bar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#90000000"
-        android:visibility="gone"/>
 </RelativeLayout>

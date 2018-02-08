@@ -3,17 +3,22 @@
       xmlns:tools="http://schemas.android.com/tools">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/item_one"
+            android:id="@+id/wallpaper"
             android:icon="@drawable/menu_wallpager"
             android:title="壁纸"
             tools:ignore="HardcodedText"/>
         <item
-            android:id="@+id/item_three"
+            android:id="@+id/skin"
+            android:icon="@drawable/me"
+            android:title="皮肤商城"
+            tools:ignore="HardcodedText"/>
+        <item
+            android:id="@+id/wechat"
             android:icon="@mipmap/menu_wechat"
             android:title="微信"
             tools:ignore="HardcodedText"/>
         <item
-            android:id="@+id/item_two"
+            android:id="@+id/setting"
             android:icon="@drawable/menu_setting"
             android:title="设置"
             tools:ignore="HardcodedText"/>

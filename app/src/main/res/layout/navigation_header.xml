@@ -3,7 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="#30469b"
+                android:background="@color/navigation_bg"
                 tools:ignore="HardCodedText">
 
     <ImageView

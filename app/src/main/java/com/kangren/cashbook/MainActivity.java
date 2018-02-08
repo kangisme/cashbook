@@ -5,6 +5,7 @@ import java.io.File;
 import com.kang.cashbook.skin.Skin;
 import com.kangren.cashbook.login.LoginActivity;
 import com.kangren.cashbook.setting.SettingActivity;
+import com.kangren.cashbook.skin.SkinActivity;
 import com.kangren.cashbook.util.JumpUtil;
 import com.kangren.cashbook.util.Utils;
 import com.kangren.cashbook.wallpaper.WallpaperActivity;
@@ -78,14 +79,17 @@ public class MainActivity extends BaseActivity
             {
                 switch (menuItem.getItemId())
                 {
-                    case R.id.item_one:
+                    case R.id.wallpaper:
                         JumpUtil.jumpActivity(MainActivity.this, WallpaperActivity.class);
                         break;
-                    case R.id.item_two:
+                    case R.id.setting:
                         JumpUtil.jumpActivity(MainActivity.this, SettingActivity.class);
                         break;
-                    case R.id.item_three:
+                    case R.id.wechat:
                         JumpUtil.jumpActivity(MainActivity.this, WechatActivity.class);
+                        break;
+                    case R.id.skin:
+                        JumpUtil.jumpActivity(MainActivity.this, SkinActivity.class);
                         break;
                 }
                 drawerLayout.closeDrawers();// 关闭抽屉

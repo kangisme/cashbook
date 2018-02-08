@@ -29,6 +29,19 @@ public class Utils
 
     public static final String FOREWARD_SLASH = "/";
 
+    public static int dp2px(Context context, float dipValue)
+    {
+        float scale = context.getResources().getDisplayMetrics().density;
+
+        return (int) (dipValue * scale + 0.5f);
+    }
+
+    public static int px2dp(Context context, float pxValue)
+    {
+        float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+
     public static Uri resourceIdToUri(Context context, int resourceId)
     {
         return Uri.parse(ANDROID_RESOURCE + context.getPackageName() + FOREWARD_SLASH + resourceId);

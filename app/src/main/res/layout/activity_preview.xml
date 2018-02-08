@@ -6,12 +6,12 @@
               android:orientation="vertical"
               tools:ignore="HardcodedText">
 
-    <com.kangren.cashbook.view.TitleBar
+    <com.kangren.cashbook.TitleBar
         android:id="@+id/preview_titlebar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height"
         android:text="预览">
-    </com.kangren.cashbook.view.TitleBar>
+    </com.kangren.cashbook.TitleBar>
 
     <ImageView
         android:id="@+id/preview_img"

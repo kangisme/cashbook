@@ -3,10 +3,10 @@ package com.kangren.cashbook.wallpaper;
 import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.MainActivity;
 import com.kangren.cashbook.R;
+import com.kangren.cashbook.TitleBar;
 import com.kangren.cashbook.util.JumpUtil;
 import com.kangren.cashbook.util.ScreenUtil;
 import com.kangren.cashbook.util.Utils;
-import com.kangren.cashbook.view.TitleBar;
 import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
 
