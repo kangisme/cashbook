@@ -98,7 +98,7 @@
 
     <include
         android:id="@+id/process_bar"
-        layout="@layout/progress_bar"
+        layout="@layout/progress_bar_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#90000000"

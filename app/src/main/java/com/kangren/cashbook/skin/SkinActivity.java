@@ -3,9 +3,10 @@ package com.kangren.cashbook.skin;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kang.cashbook.data.DataService;
 import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.R;
-import com.kangren.cashbook.template.BaseFragment;
+import com.kangren.cashbook.skin.ui.BaseFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -45,6 +46,8 @@ public class SkinActivity extends BaseActivity
         initFragments();
 
         initViewPager();
+
+        DataService.get(this).asynGet();
     }
 
     private void initFragments()

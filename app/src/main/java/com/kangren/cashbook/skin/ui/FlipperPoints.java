@@ -1,4 +1,4 @@
-package com.kangren.cashbook.template;
+package com.kangren.cashbook.skin.ui;
 
 import com.kangren.cashbook.R;
 import com.kangren.cashbook.util.Utils;

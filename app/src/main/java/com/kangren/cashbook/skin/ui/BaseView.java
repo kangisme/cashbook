@@ -1,5 +1,6 @@
-package com.kangren.cashbook.template;
+package com.kangren.cashbook.skin.ui;
 
+import com.kang.cashbook.data.model.JsonBean.ModulesBean;
 import com.kangren.cashbook.R;
 
 import android.content.Context;
@@ -57,16 +58,12 @@ public abstract class BaseView extends LinearLayout
      */
     abstract public void addView();
 
-    abstract public BaseModel getData();
+    abstract public ModulesBean getData();
 
-    abstract public void setData(BaseModel data);
+    abstract public void setData(ModulesBean data);
 
-    abstract public void fillData(BaseModel data);
+    abstract public void fillData(ModulesBean data);
 
-    public void onItemClick(BaseModel data)
-    {
-
-    }
 
     /**
      * 返回自己的类型
@@ -99,7 +96,7 @@ public abstract class BaseView extends LinearLayout
         }
     }
 
-    public void adjustViewByData(BaseModel data)
+    public void adjustViewByData(ModulesBean data)
     {
         if (data == null)
         {
