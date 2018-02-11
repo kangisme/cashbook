@@ -4,14 +4,11 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.kang.cashbook.data.model.JsonBean;
+import com.orhanobut.logger.Logger;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 
 import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -29,21 +26,6 @@ public class DataService
 
     private Gson gson;
 
-    private Handler handler = new Handler(new Handler.Callback()
-    {
-        @Override
-        public boolean handleMessage(Message msg)
-        {
-            if (msg.what == GET_SUCCESS)
-            {
-                String result = (String) msg.obj;
-                JsonBean bean = gson.fromJson(result, JsonBean.class);
-                Log.d("asd", bean.getTitle());
-            }
-            return false;
-        }
-    });
-
     /**
      * @param context context.getApplicationContext()
      */
@@ -56,7 +38,7 @@ public class DataService
     /**
      * 普通Context
      * 
-     * @param context every context
+     * @param context any context
      * @return DataService
      */
     public static synchronized DataService get(Context context)
@@ -64,32 +46,52 @@ public class DataService
         return new DataService(context.getApplicationContext());
     }
 
-    public void asynGet()
+    /**
+     * 获取url返回的数据
+     * 
+     * @param url 请求url
+     * @return String类型结果
+     */
+    public String data(String url)
     {
         OkHttpClient okHttpClient = new OkHttpClient();
-        Request request = new Request.Builder().url("http://111.231.249.239:88/home").build();
+        Request request = new Request.Builder().url(url).build();
         Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback()
+        String result = null;
+        try
         {
-            @Override
-            public void onFailure(Call call, IOException e)
+            Response response = call.execute();
+            if (response.isSuccessful())
             {
-
+                result = response.body().string();
             }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException
+            else
             {
-                if (response.isSuccessful())
-                {
-                    String result = response.body().string();
-                    Message message = new Message();
-                    message.obj = result;
-                    message.what = GET_SUCCESS;
-                    handler.sendMessage(message);
-                }
+                Logger.e("response is unsuccessful");
             }
-        });
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            Logger.e("okhttp execute io exception");
+        }
+        return result;
+    }
 
+    /**
+     * 获取url返回的数据，并格式化
+     * 
+     * @param url 请求url
+     * @return JsonBean类型结果
+     */
+    public JsonBean dataFormat(String url)
+    {
+        String result = data(url);
+        JsonBean bean = null;
+        if (result != null)
+        {
+            bean = gson.fromJson(result, JsonBean.class);
+        }
+        return bean;
     }
 }

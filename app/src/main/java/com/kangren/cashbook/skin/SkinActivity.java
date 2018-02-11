@@ -1,14 +1,19 @@
 package com.kangren.cashbook.skin;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.kang.cashbook.data.DataService;
+import com.kang.cashbook.data.UrlConstants;
+import com.kang.cashbook.data.model.JsonBean;
 import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.R;
 import com.kangren.cashbook.skin.ui.BaseFragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -23,6 +28,9 @@ import butterknife.ButterKnife;
 
 public class SkinActivity extends BaseActivity
 {
+    private static final int LOAD_HOME_FAIL = 0;
+
+    private static final int LOAD_HOME_SUCCESS = 1;
 
     @BindView(R.id.skin_tabs)
     PagerSlidingTabStrip skinTabs;
@@ -34,7 +42,36 @@ public class SkinActivity extends BaseActivity
 
     private List<BaseFragment> fragmentList;
 
-    private String[] titles;
+    private List<String> titles;
+
+    private Handler handler = new Handler(new Handler.Callback()
+    {
+        @Override
+        public boolean handleMessage(Message msg)
+        {
+            switch (msg.what)
+            {
+                case LOAD_HOME_FAIL:
+                    break;
+                case LOAD_HOME_SUCCESS:
+                    if (titles == null)
+                    {
+                        titles = new ArrayList<>();
+                    }
+
+                    titles.clear();
+                    JsonBean bean = (JsonBean) msg.obj;
+                    List<JsonBean.ModulesBean.DlistBean> dlistBeans = bean.getModules().get(0).getDlist();
+                    for (JsonBean.ModulesBean.DlistBean dlistBean : dlistBeans)
+                    {
+                        titles.add(dlistBean.getTitle());
+                    }
+                    initFragments();
+                    break;
+            }
+            return false;
+        }
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,17 +80,21 @@ public class SkinActivity extends BaseActivity
         setContentView(R.layout.activity_skin);
         ButterKnife.bind(this);
 
-        initFragments();
+        loadData();
+    }
 
-        initViewPager();
-
-        DataService.get(this).asynGet();
+    private void loadData()
+    {
+        new Thread(new LoadTask(SkinActivity.this)).start();
     }
 
     private void initFragments()
     {
-        fragmentList = new ArrayList<>();
-        titles = new String[] {"推荐", "分类", "排行", "我的"};
+        if (fragmentList == null)
+        {
+            fragmentList = new ArrayList<>();
+        }
+        fragmentList.clear();
         for (String title : titles)
         {
             BaseFragment baseFragment = new BaseFragment();
@@ -62,10 +103,6 @@ public class SkinActivity extends BaseActivity
             baseFragment.setArguments(bundle);
             fragmentList.add(baseFragment);
         }
-    }
-
-    private void initViewPager()
-    {
         adapter = new SkinFragmentAdapter(getSupportFragmentManager());
         skinViewPager.setAdapter(adapter);
         skinTabs.setViewPager(skinViewPager);
@@ -93,7 +130,43 @@ public class SkinActivity extends BaseActivity
         @Override
         public CharSequence getPageTitle(int position)
         {
-            return titles[position];
+            return titles.get(position);
+        }
+    }
+
+    private class LoadTask implements Runnable
+    {
+        private WeakReference<SkinActivity> refActivity;
+
+        public LoadTask(SkinActivity activity)
+        {
+            refActivity = new WeakReference<SkinActivity>(activity);
+        }
+
+        @Override
+        public void run()
+        {
+            if (refActivity.get() == null)
+            {
+                return;
+            }
+            // 从DataService获取模块数据
+            JsonBean bean = DataService.get(refActivity.get()).dataFormat(UrlConstants.HOME);
+            if (refActivity.get() == null || refActivity.get().isFinishing())
+            {
+                return;
+            }
+            if (bean == null)
+            {
+                handler.sendEmptyMessage(LOAD_HOME_FAIL);
+            }
+            else
+            {
+                Message message = new Message();
+                message.obj = bean;
+                message.what = LOAD_HOME_SUCCESS;
+                handler.sendMessage(message);
+            }
         }
     }
 }

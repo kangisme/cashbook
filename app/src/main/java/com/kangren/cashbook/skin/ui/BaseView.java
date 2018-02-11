@@ -4,9 +4,7 @@ import com.kang.cashbook.data.model.JsonBean.ModulesBean;
 import com.kangren.cashbook.R;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutCompat;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -33,24 +31,6 @@ public abstract class BaseView extends LinearLayout
         super(context);
         mContext = context;
         this.templateId = templateId;
-    }
-
-    public BaseView(Context context, @Nullable AttributeSet attrs)
-    {
-        super(context, attrs);
-        mContext = context;
-    }
-
-    public BaseView(Context context, @Nullable AttributeSet attrs, int defStyleAttr)
-    {
-        super(context, attrs, defStyleAttr);
-        mContext = context;
-    }
-
-    public BaseView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes)
-    {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        mContext = context;
     }
 
     /**
