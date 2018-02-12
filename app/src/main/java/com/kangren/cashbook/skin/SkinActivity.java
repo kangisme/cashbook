@@ -42,7 +42,15 @@ public class SkinActivity extends BaseActivity
 
     private List<BaseFragment> fragmentList;
 
+    /**
+     * tab标题
+     */
     private List<String> titles;
+
+    /**
+     * tab对应的链接 BaseFragment根据不同链接加载不同的数据
+     */
+    private List<String> links;
 
     private Handler handler = new Handler(new Handler.Callback()
     {
@@ -65,6 +73,17 @@ public class SkinActivity extends BaseActivity
                     for (JsonBean.ModulesBean.DlistBean dlistBean : dlistBeans)
                     {
                         titles.add(dlistBean.getTitle());
+                    }
+
+                    if (links == null)
+                    {
+                        links = new ArrayList<>();
+                    }
+
+                    links.clear();
+                    for (JsonBean.ModulesBean.DlistBean dlistBean : dlistBeans)
+                    {
+                        links.add(dlistBean.getDlink());
                     }
                     initFragments();
                     break;
@@ -95,11 +114,11 @@ public class SkinActivity extends BaseActivity
             fragmentList = new ArrayList<>();
         }
         fragmentList.clear();
-        for (String title : titles)
+        for (String title : links)
         {
             BaseFragment baseFragment = new BaseFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("Title", title);
+            bundle.putString(BaseFragment.FRAGMENT_LINK, title);
             baseFragment.setArguments(bundle);
             fragmentList.add(baseFragment);
         }

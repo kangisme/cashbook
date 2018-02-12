@@ -15,22 +15,24 @@ import android.widget.LinearLayout;
 public abstract class BaseView extends LinearLayout
 {
 
-    public String moduleId;
+    protected String moduleId;
 
     protected Context mContext;
 
-    protected String templateId;
+    protected int viewType;
 
     /**
      * 分割线
      */
     protected View dividerView;
 
-    public BaseView(Context context, String templateId)
+    protected boolean onShowing;
+
+    public BaseView(Context context, int viewType)
     {
         super(context);
         mContext = context;
-        this.templateId = templateId;
+        this.viewType = viewType;
     }
 
     /**
@@ -44,13 +46,18 @@ public abstract class BaseView extends LinearLayout
 
     abstract public void fillData(ModulesBean data);
 
+    public void refresh(ModulesBean data)
+    {
+        fillData(data);
+        invalidate();
+    }
 
     /**
      * 返回自己的类型
      */
-    public String getTemplateId()
+    public int getViewType()
     {
-        return templateId;
+        return viewType;
     }
 
     /**
@@ -59,6 +66,11 @@ public abstract class BaseView extends LinearLayout
     public String getModuleId()
     {
         return moduleId;
+    }
+
+    public void setModuleId(String moduleId)
+    {
+        this.moduleId = moduleId;
     }
 
     /**
@@ -82,6 +94,10 @@ public abstract class BaseView extends LinearLayout
         {
             return;
         }
+    }
 
+    public void setOnShowing(boolean showing)
+    {
+        this.onShowing = showing;
     }
 }

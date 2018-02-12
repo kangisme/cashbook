@@ -9,24 +9,24 @@ import java.util.List;
 public class JsonBean
 {
     /**
-     * id : cashbook://home title : 首页 modules :
-     * [{"id":"home_cate","title":"分类","dlist":[{"title":"推荐"},{"title":"分类"},{"title":"排行"},{"title":"我的"}]}]
+     * link : cashbook://home title : 首页 modules :
+     * [{"link":"home_cate","title":"分类","dlist":[{"title":"推荐"},{"title":"分类"},{"title":"排行"},{"title":"我的"}]}]
      */
 
-    private String id;
+    private String link;
 
     private String title;
 
     private List<ModulesBean> modules;
 
-    public String getId()
+    public String getLink()
     {
-        return id;
+        return link;
     }
 
-    public void setId(String id)
+    public void setLink(String link)
     {
-        this.id = id;
+        this.link = link;
     }
 
     public String getTitle()
@@ -52,13 +52,22 @@ public class JsonBean
     public static class ModulesBean
     {
         /**
-         * id : home_cate title : 分类 dlist :
+         * link : home_cate title : 分类 dlist :
          * [{"title":"推荐"},{"title":"分类"},{"title":"排行"},{"title":"我的"}]
          */
 
         private String id;
 
         private String title;
+
+        private String url;
+
+        private float scale;
+
+        /**
+         * 模板ViewHolder类型识别码
+         */
+        private int type;
 
         private List<DlistBean> dlist;
 
@@ -82,6 +91,36 @@ public class JsonBean
             this.title = title;
         }
 
+        public String getUrl()
+        {
+            return url;
+        }
+
+        public void setUrl(String url)
+        {
+            this.url = url;
+        }
+
+        public float getScale()
+        {
+            return scale;
+        }
+
+        public void setScale(float scale)
+        {
+            this.scale = scale;
+        }
+
+        public int getType()
+        {
+            return type;
+        }
+
+        public void setType(int type)
+        {
+            this.type = type;
+        }
+
         public List<DlistBean> getDlist()
         {
             return dlist;
@@ -100,6 +139,8 @@ public class JsonBean
 
             private String title;
 
+            private String dlink;
+
             public String getTitle()
             {
                 return title;
@@ -108,6 +149,16 @@ public class JsonBean
             public void setTitle(String title)
             {
                 this.title = title;
+            }
+
+            public String getDlink()
+            {
+                return dlink;
+            }
+
+            public void setDlink(String dlink)
+            {
+                this.dlink = dlink;
             }
         }
     }

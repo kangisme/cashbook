@@ -7,11 +7,10 @@ import android.view.View;
  * ViewHolder Created by kangren on 2018/2/11.
  */
 
-public class ContainerHolder extends RecyclerView.ViewHolder
+public class FlipperTemplateHolder extends RecyclerView.ViewHolder
 {
-    public ContainerHolder(View itemView)
+    public FlipperTemplateHolder(View itemView)
     {
         super(itemView);
     }
-
 }
