@@ -23,3 +23,16 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    //http请求
+    okhttp = 'com.squareup.okhttp3:okhttp:3.9.1'
+    //okhttp支持包
+    okio = 'com.squareup.okio:okio:1.13.0'
+    //log日志工具
+    logger = 'com.orhanobut:logger:2.1.1'
+    //图片加载框架
+    picasso = 'com.squareup.picasso:picasso:2.5.2'
+    //事件总线
+    eventbus = "org.greenrobot:eventbus:3.0.0"
+}

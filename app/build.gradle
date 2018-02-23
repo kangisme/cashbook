@@ -36,12 +36,13 @@ dependencies {
 
 
     //图片加载框架
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile rootProject.ext.picasso
+    //log日志工具
+    compile rootProject.ext.logger
+    compile rootProject.ext.eventbus
     //JakeWharton大神的黄油刀
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    //log日志工具
-    compile 'com.orhanobut:logger:2.1.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:design:25.0.0'
