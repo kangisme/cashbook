@@ -6,7 +6,7 @@ package com.kang.cashbook.data;
 
 public class UrlConstants
 {
-    public static String BASE_URL = "http://111.231.249.219:88";
+    public static String BASE_URL = "http://111.231.249.219:88/cashbook";
 
     public static String HOME = BASE_URL + "/home";
 

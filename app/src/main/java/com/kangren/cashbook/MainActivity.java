@@ -2,7 +2,6 @@ package com.kangren.cashbook;
 
 import java.io.File;
 
-import com.kang.cashbook.skin.Skin;
 import com.kangren.cashbook.login.LoginActivity;
 import com.kangren.cashbook.setting.SettingActivity;
 import com.kangren.cashbook.skin.SkinActivity;
@@ -54,7 +53,6 @@ public class MainActivity extends BaseActivity
     private void initView()
     {
         textContent = (TextView) findViewById(R.id.text_content);
-        textContent.setText(Skin.SKIN_STRING);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);

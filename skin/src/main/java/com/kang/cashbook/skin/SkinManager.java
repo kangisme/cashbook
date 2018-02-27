@@ -3,6 +3,8 @@ package com.kang.cashbook.skin;
 import java.io.File;
 import java.lang.reflect.Method;
 
+import com.orhanobut.logger.Logger;
+
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -11,7 +13,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
 /**
  * Created by kangren on 2018/2/7.
@@ -89,7 +90,7 @@ public class SkinManager
         }
         catch (Throwable e)
         {
-            Log.d("theme", "getSkinPackageInfo error" + e);
+            Logger.e("getSkinPackageInfo error" + e);
         }
         return null;
     }
@@ -114,7 +115,7 @@ public class SkinManager
         }
         catch (Throwable e)
         {
-            Log.d("theme", "getSkinResources error" + e);
+            Logger.e("getSkinResources error" + e);
         }
         return null;
     }

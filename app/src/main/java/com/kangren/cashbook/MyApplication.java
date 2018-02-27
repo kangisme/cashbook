@@ -1,5 +1,6 @@
 package com.kangren.cashbook;
 
+import com.kang.cashbook.data.util.ThreadPool;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
@@ -28,5 +29,12 @@ public class MyApplication extends Application
         });
 
         Logger.d("application create");
+    }
+
+    @Override
+    public void onTerminate()
+    {
+        super.onTerminate();
+        ThreadPool.shutdown();
     }
 }
