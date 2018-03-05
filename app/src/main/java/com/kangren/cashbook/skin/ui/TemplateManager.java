@@ -12,6 +12,7 @@ public class TemplateManager
 {
     public static final int FLIPPER_TEMPLATE = 1;
 
+
     public static RecyclerView.ViewHolder getViewHolder(View itemView, int viewType)
     {
         switch (viewType)
