@@ -94,7 +94,7 @@ public class Container
                 android.R.color.holo_orange_light, android.R.color.holo_red_light);
 
         // 通过 setEnabled(false) 禁用下拉刷新
-        refreshLayout.setEnabled(false);
+        refreshLayout.setEnabled(true);
 
         // 设定下拉圆圈的背景
         refreshLayout.setProgressBackgroundColor(R.color.colorAccent);

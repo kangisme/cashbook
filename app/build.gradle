@@ -32,7 +32,8 @@ dependencies {
     compile project(':skin')
     //引用data模块
     compile project(':data')
-
+    //引用imageloader模块
+    compile project(':fresco')
 
 
     //图片加载框架

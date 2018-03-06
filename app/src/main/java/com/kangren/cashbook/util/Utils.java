@@ -42,6 +42,19 @@ public class Utils
         return (int) (pxValue / scale + 0.5f);
     }
 
+    /**
+     * 小的为高度
+     *
+     * @param context
+     * @return
+     */
+    public static int screenHeightPx(Context context)
+    {
+        int widthPx = context.getResources().getDisplayMetrics().widthPixels;
+        int heightPx = context.getResources().getDisplayMetrics().heightPixels;
+        return widthPx > heightPx ? heightPx : widthPx;
+    }
+
     public static Uri resourceIdToUri(Context context, int resourceId)
     {
         return Uri.parse(ANDROID_RESOURCE + context.getPackageName() + FOREWARD_SLASH + resourceId);
