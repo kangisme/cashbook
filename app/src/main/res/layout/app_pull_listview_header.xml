@@ -27,7 +27,7 @@
                     android:id="@+id/xlistview_header_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/xlistview_arrow"/>
+                    android:src="@mipmap/xlistview_arrow"/>
 
                 <com.pplive.androidphone.ui.videoplayer.layout.PlayerProgress
                     android:id="@+id/xlistview_header_progress"
@@ -44,7 +44,7 @@
                 android:id="@+id/xlistview_header_hint_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pull_to_refresh_label"/>
+                android:text="下拉刷新"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/xlistview_header_last_time"
+                    android:text="上次更新时间"
                     android:textSize="@dimen/font_small"/>
 
                 <TextView
