@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import com.orhanobut.logger.Logger;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -294,7 +296,7 @@ public class GifDecoder extends Thread
 
     public void run()
     {
-        LogUtils.info("baotiantang Gif coder start-->" + this);
+        Logger.d("gif coder start-->" + this);
         if (in != null)
         {
             readStream();
@@ -311,7 +313,7 @@ public class GifDecoder extends Thread
      */
     public void free()
     {
-        LogUtils.error("baotiantang Gif decoder free " + this);
+        Logger.e("gif decoder free " + this);
         GifFrame fg = gifFrame;
         if (cacheImage == false)
         {

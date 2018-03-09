@@ -7,6 +7,7 @@
 package com.kangren.cashbook.recyclerview;
 
 import com.kangren.cashbook.R;
+import com.kangren.cashbook.recyclerview.view.PlayerProgress;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -130,18 +131,18 @@ public class PullToRefreshListViewHeader extends LinearLayout implements IPullTo
                 {
                     mArrowImageView.clearAnimation();
                 }
-                mHintTextView.setText(R.string.pull_to_refresh_label);
+                mHintTextView.setText("下拉刷新");
                 break;
             case STATE_READY:
                 if (mState != STATE_READY)
                 {
                     mArrowImageView.clearAnimation();
                     mArrowImageView.startAnimation(mRotateUpAnim);
-                    mHintTextView.setText(R.string.release_to_refresh_label);
+                    mHintTextView.setText("松手后刷新");
                 }
                 break;
             case STATE_REFRESHING:
-                mHintTextView.setText(R.string.pull_to_refreshing_label);
+                mHintTextView.setText("正在刷新");
                 break;
             default:
         }
@@ -192,18 +193,18 @@ public class PullToRefreshListViewHeader extends LinearLayout implements IPullTo
                 {
                     mArrowImageView.clearAnimation();
                 }
-                mHintTextView.setText(R.string.pull_to_refresh_label);
+                mHintTextView.setText("下拉刷新");
                 break;
             case READY:
                 if (this.state != IPullToRefreshListViewHeader.State.READY)
                 {
                     mArrowImageView.clearAnimation();
                     mArrowImageView.startAnimation(mRotateUpAnim);
-                    mHintTextView.setText(R.string.release_to_refresh_label);
+                    mHintTextView.setText("松手后刷新");
                 }
                 break;
             case REFRESHING:
-                mHintTextView.setText(R.string.pull_to_refreshing_label);
+                mHintTextView.setText("正在刷新");
                 break;
             default:
         }
