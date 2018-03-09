@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.kangren.cashbook.TitleBar
+    <com.kangren.cashbook.common.TitleBar
         android:id="@+id/signup_titlebar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height"
         android:text="注册">
-    </com.kangren.cashbook.TitleBar>
+    </com.kangren.cashbook.common.TitleBar>
 
     <LinearLayout
         android:id="@+id/user_name"

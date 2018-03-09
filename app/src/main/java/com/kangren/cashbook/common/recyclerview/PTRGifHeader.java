@@ -1,4 +1,4 @@
-package com.kangren.cashbook.recyclerview;
+package com.kangren.cashbook.common.recyclerview;
 
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
@@ -6,8 +6,8 @@ import java.lang.ref.WeakReference;
 import com.kang.cashbook.imageloader.AsyncImageUtils;
 import com.kang.cashbook.imageloader.BitmapCallback;
 import com.kangren.cashbook.R;
-import com.kangren.cashbook.recyclerview.gif.GifDecoder;
-import com.kangren.cashbook.recyclerview.gif.GifFrame;
+import com.kangren.cashbook.common.recyclerview.gif.GifDecoder;
+import com.kangren.cashbook.common.recyclerview.gif.GifFrame;
 import com.kangren.cashbook.util.Utils;
 import com.orhanobut.logger.Logger;
 

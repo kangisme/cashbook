@@ -1,5 +1,6 @@
 package com.kangren.cashbook;
 
+import com.kangren.cashbook.common.BaseActivity;
 import com.kangren.cashbook.util.PreferencesUtil;
 import com.kangren.cashbook.util.Utils;
 

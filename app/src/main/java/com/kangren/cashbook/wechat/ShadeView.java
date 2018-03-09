@@ -1,4 +1,6 @@
-package com.kangren.cashbook;
+package com.kangren.cashbook.wechat;
+
+import com.kangren.cashbook.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;

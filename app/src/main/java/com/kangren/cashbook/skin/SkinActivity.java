@@ -7,8 +7,8 @@ import java.util.List;
 import com.kang.cashbook.data.DataService;
 import com.kang.cashbook.data.UrlConstants;
 import com.kang.cashbook.data.model.JsonBean;
-import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.R;
+import com.kangren.cashbook.common.BaseActivity;
 import com.kangren.cashbook.skin.ui.BaseFragment;
 
 import android.os.Bundle;

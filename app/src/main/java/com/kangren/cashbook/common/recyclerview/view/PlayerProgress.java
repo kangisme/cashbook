@@ -1,4 +1,4 @@
-package com.kangren.cashbook.recyclerview.view;
+package com.kangren.cashbook.common.recyclerview.view;
 
 import android.content.Context;
 import android.graphics.Canvas;

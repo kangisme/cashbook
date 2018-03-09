@@ -18,7 +18,7 @@
         android:paddingBottom="3dp"
         android:paddingTop="1dp">
 
-        <com.kangren.cashbook.ShadeView
+        <com.kangren.cashbook.wechat.ShadeView
             android:id="@+id/id_indicator_one"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -27,7 +27,7 @@
             app:icon="@drawable/weixin"
             app:text="微信"/>
 
-        <com.kangren.cashbook.ShadeView
+        <com.kangren.cashbook.wechat.ShadeView
             android:id="@+id/id_indicator_two"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -36,7 +36,7 @@
             app:icon="@drawable/address_book"
             app:text="通讯录"/>
 
-        <com.kangren.cashbook.ShadeView
+        <com.kangren.cashbook.wechat.ShadeView
             android:id="@+id/id_indicator_three"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -45,7 +45,7 @@
             app:icon="@drawable/discover"
             app:text="发现"/>
 
-        <com.kangren.cashbook.ShadeView
+        <com.kangren.cashbook.wechat.ShadeView
             android:id="@+id/id_indicator_four"
             android:layout_width="0dp"
             android:layout_height="match_parent"

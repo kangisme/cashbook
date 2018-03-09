@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:ignore="HardcodedText">
 
-    <com.kangren.cashbook.TitleBar
+    <com.kangren.cashbook.common.TitleBar
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height"
         android:text="设置">
-    </com.kangren.cashbook.TitleBar>
+    </com.kangren.cashbook.common.TitleBar>
 </LinearLayout>

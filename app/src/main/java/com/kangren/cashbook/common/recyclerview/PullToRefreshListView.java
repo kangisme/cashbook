@@ -6,7 +6,7 @@
  * @description An ListView support (a) Pull down to refresh, (b) Pull up to load more.
  * 		Implement IXListViewListener, and see stopRefresh() / stopLoadMore().
  */
-package com.kangren.cashbook.recyclerview;
+package com.kangren.cashbook.common.recyclerview;
 
 import java.text.SimpleDateFormat;
 

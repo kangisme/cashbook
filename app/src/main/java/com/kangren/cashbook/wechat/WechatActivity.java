@@ -3,10 +3,9 @@ package com.kangren.cashbook.wechat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.R;
-import com.kangren.cashbook.ShadeView;
 import com.kangren.cashbook.TabFragment;
+import com.kangren.cashbook.common.BaseActivity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

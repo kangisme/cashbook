@@ -2,6 +2,7 @@ package com.kangren.cashbook;
 
 import java.io.File;
 
+import com.kangren.cashbook.common.BaseActivity;
 import com.kangren.cashbook.login.LoginActivity;
 import com.kangren.cashbook.setting.SettingActivity;
 import com.kangren.cashbook.skin.SkinActivity;

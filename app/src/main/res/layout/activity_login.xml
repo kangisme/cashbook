@@ -5,13 +5,13 @@
                 android:layout_height="match_parent"
                 tools:ignore="SpUsage,HardcodedText">
 
-    <com.kangren.cashbook.TitleBar
+    <com.kangren.cashbook.common.TitleBar
         android:id="@+id/login_titlebar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height"
         android:text="登录">
 
-    </com.kangren.cashbook.TitleBar>
+    </com.kangren.cashbook.common.TitleBar>
 
     <LinearLayout
         android:id="@+id/user_name"

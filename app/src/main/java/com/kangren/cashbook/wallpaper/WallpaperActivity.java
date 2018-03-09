@@ -1,7 +1,7 @@
 package com.kangren.cashbook.wallpaper;
 
-import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.R;
+import com.kangren.cashbook.common.BaseActivity;
 
 import android.content.Intent;
 import android.net.Uri;

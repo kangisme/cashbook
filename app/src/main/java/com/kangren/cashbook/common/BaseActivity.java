@@ -1,4 +1,4 @@
-package com.kangren.cashbook;
+package com.kangren.cashbook.common;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

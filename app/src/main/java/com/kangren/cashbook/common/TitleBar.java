@@ -1,5 +1,6 @@
-package com.kangren.cashbook;
+package com.kangren.cashbook.common;
 
+import com.kangren.cashbook.R;
 import com.orhanobut.logger.Logger;
 
 import android.app.Activity;

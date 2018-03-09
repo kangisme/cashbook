@@ -1,4 +1,4 @@
-package com.kangren.cashbook.recyclerview;
+package com.kangren.cashbook.common.recyclerview;
 
 import android.support.annotation.ColorInt;
 import android.view.View;

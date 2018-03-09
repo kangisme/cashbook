@@ -1,8 +1,8 @@
 package com.kangren.cashbook.login;
 
-import com.kangren.cashbook.BaseActivity;
 import com.kangren.cashbook.R;
-import com.kangren.cashbook.TitleBar;
+import com.kangren.cashbook.common.BaseActivity;
+import com.kangren.cashbook.common.TitleBar;
 import com.kangren.cashbook.util.JumpUtil;
 
 import android.os.Bundle;
