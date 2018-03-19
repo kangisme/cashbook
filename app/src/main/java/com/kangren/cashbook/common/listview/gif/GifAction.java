@@ -1,4 +1,4 @@
-package com.kangren.cashbook.common.recyclerview.gif;
+package com.kangren.cashbook.common.listview.gif;
 
 /**
  * gif解码回调接口

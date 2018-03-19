@@ -4,7 +4,7 @@
  * @author Maxwin
  * @description XListView's footer
  */
-package com.kangren.cashbook.common.recyclerview;
+package com.kangren.cashbook.common.listview;
 
 import com.kangren.cashbook.R;
 

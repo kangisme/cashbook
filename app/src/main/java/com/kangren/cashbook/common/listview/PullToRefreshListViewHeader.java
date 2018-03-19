@@ -4,10 +4,10 @@
  * @author Maxwin
  * @description XListView's header
  */
-package com.kangren.cashbook.common.recyclerview;
+package com.kangren.cashbook.common.listview;
 
 import com.kangren.cashbook.R;
-import com.kangren.cashbook.common.recyclerview.view.PlayerProgress;
+import com.kangren.cashbook.common.listview.view.PlayerProgress;
 
 import android.content.Context;
 import android.util.AttributeSet;

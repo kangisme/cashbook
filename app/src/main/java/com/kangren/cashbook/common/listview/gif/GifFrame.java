@@ -1,4 +1,4 @@
-package com.kangren.cashbook.common.recyclerview.gif;
+package com.kangren.cashbook.common.listview.gif;
 
 import android.graphics.Bitmap;
 
