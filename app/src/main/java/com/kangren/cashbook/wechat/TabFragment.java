@@ -1,4 +1,4 @@
-package com.kangren.cashbook;
+package com.kangren.cashbook.wechat;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

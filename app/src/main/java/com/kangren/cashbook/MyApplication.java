@@ -1,6 +1,8 @@
 package com.kangren.cashbook;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.kang.cashbook.data.util.ThreadPool;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -18,11 +20,20 @@ import android.os.Bundle;
 
 public class MyApplication extends Application
 {
-    public static int count;
+    public static MyApplication application;
+
+    public int count;
 
     private WeakReference<Activity> mActivity;
 
-    public static boolean isAppVisible()
+    private List<WeakReference<Activity>> activityList;
+
+    public static MyApplication getApplication()
+    {
+        return application;
+    }
+
+    public boolean isAppVisible()
     {
         return count > 0;
     }
@@ -31,6 +42,9 @@ public class MyApplication extends Application
     public void onCreate()
     {
         super.onCreate();
+        application = this;
+        activityList = new ArrayList<WeakReference<Activity>>();
+        CrashHandler.getInstance().init(this);
         FormatStrategy strategy = PrettyFormatStrategy.newBuilder().showThreadInfo(false).tag("cashbookTAG").build();
         Logger.addLogAdapter(new AndroidLogAdapter(strategy)
         {
@@ -48,7 +62,7 @@ public class MyApplication extends Application
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState)
             {
-
+                activityList.add(new WeakReference<Activity>(activity));
             }
 
             @Override
@@ -96,6 +110,20 @@ public class MyApplication extends Application
             return null;
         }
         return mActivity.get();
+    }
+
+    public void exitApp()
+    {
+        for (WeakReference<Activity> temp : activityList)
+        {
+            Activity activity = temp.get();
+            if (activity != null)
+            {
+                activity.finish();
+            }
+        }
+        activityList.clear();
+        System.exit(0);
     }
 
     @Override

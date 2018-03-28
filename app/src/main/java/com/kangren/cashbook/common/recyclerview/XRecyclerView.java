@@ -30,16 +30,19 @@ public class XRecyclerView extends RecyclerView
     public XRecyclerView(Context context)
     {
         super(context);
+        initWithContext(context);
     }
 
     public XRecyclerView(Context context, @Nullable AttributeSet attrs)
     {
         super(context, attrs);
+        initWithContext(context);
     }
 
     public XRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle)
     {
         super(context, attrs, defStyle);
+        initWithContext(context);
     }
 
     @Override

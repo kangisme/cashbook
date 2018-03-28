@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kangren.cashbook.R;
-import com.kangren.cashbook.TabFragment;
 import com.kangren.cashbook.common.BaseActivity;
 
 import android.os.Bundle;
