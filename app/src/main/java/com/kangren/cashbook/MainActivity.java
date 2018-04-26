@@ -7,7 +7,7 @@ import com.kangren.cashbook.login.LoginActivity;
 import com.kangren.cashbook.setting.SettingActivity;
 import com.kangren.cashbook.skin.SkinActivity;
 import com.kangren.cashbook.util.JumpUtil;
-import com.kangren.cashbook.util.Utils;
+import com.kangren.cashbook.util.UtilMethod;
 import com.kangren.cashbook.wallpaper.WallpaperActivity;
 import com.kangren.cashbook.wechat.WechatActivity;
 import com.orhanobut.logger.Logger;
@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity
     {
         String path = getFilesDir().getPath() + "/" + BuildConfig.WALLPAPER_FILE;
         File file = new File(path);
-        Uri uri = Utils.fileToUri(this, file);
+        Uri uri = UtilMethod.fileToUri(this, file);
         paperLayout.setBackground(Drawable.createFromPath(path));
     }
 

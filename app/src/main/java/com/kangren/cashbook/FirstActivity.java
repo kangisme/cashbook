@@ -2,7 +2,7 @@ package com.kangren.cashbook;
 
 import com.kangren.cashbook.common.BaseActivity;
 import com.kangren.cashbook.util.PreferencesUtil;
-import com.kangren.cashbook.util.Utils;
+import com.kangren.cashbook.util.UtilMethod;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ public class FirstActivity extends BaseActivity
         if (PreferencesUtil.isFirstEnter(this))
         {
             // 第一次进入配置
-            Utils.resourceIdSaveFile(this, R.mipmap.bg_overcast);
+            UtilMethod.resourceIdSaveFile(this, R.mipmap.bg_overcast);
             PreferencesUtil.setFirstEnter(this);
         }
         Handler handler = new Handler();

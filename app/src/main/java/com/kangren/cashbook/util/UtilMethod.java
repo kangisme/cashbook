@@ -15,15 +15,20 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.view.TouchDelegate;
+import android.view.View;
+import android.view.ViewParent;
 
 /**
  * Created by kangren on 2018/1/31.
  */
 
-public class Utils
+public class UtilMethod
 {
     public static final String ANDROID_RESOURCE = "android.resource://";
 
@@ -219,5 +224,67 @@ public class Utils
         {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 通过包名检测系统中是否安装某个应用程序
+     *
+     * @param context
+     * @param packageName com.kang.cashbook
+     * @return 是否安装
+     */
+    public static boolean isAppInstalled(Context context, String packageName)
+    {
+        if (TextUtils.isEmpty(packageName) || context == null)
+        {
+            return false;
+        }
+        try
+        {
+            context.getPackageManager().getApplicationInfo(packageName, 0x0);
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
+
+    /**
+     * 加大点击范围
+     *
+     * @param view view
+     * @see [类、类#方法、类#成员]
+     */
+    public static void enlargeClickArea(final View view)
+    {
+        if (view == null)
+        {
+            return;
+        }
+        ViewParent parent = view.getParent();
+        if (parent == null || !View.class.isInstance(parent))
+        {
+            return;
+        }
+        final View parentView = (View) parent;
+        parentView.post(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                Rect bounds = new Rect();
+
+                view.getHitRect(bounds);
+                bounds.left -= 15;
+                bounds.right += 15;
+                bounds.bottom += 15;
+                bounds.top -= 15;
+
+                TouchDelegate touchDelegate = new TouchDelegate(bounds, view);
+
+                parentView.setTouchDelegate(touchDelegate);
+            }
+        });
     }
 }

@@ -6,7 +6,7 @@ import com.kangren.cashbook.common.BaseActivity;
 import com.kangren.cashbook.common.TitleBar;
 import com.kangren.cashbook.util.JumpUtil;
 import com.kangren.cashbook.util.ScreenUtil;
-import com.kangren.cashbook.util.Utils;
+import com.kangren.cashbook.util.UtilMethod;
 import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
 
@@ -58,7 +58,7 @@ public class PreviewActivity extends BaseActivity
                 {
                     if (resourceId != 0)
                     {
-                        Utils.resourceIdSaveFile(PreviewActivity.this, resourceId);
+                        UtilMethod.resourceIdSaveFile(PreviewActivity.this, resourceId);
                     }
                     else
                     {
@@ -70,7 +70,7 @@ public class PreviewActivity extends BaseActivity
                 {
                     if (imgUri != null)
                     {
-                        Utils.uriSaveFile(PreviewActivity.this, imgUri);
+                        UtilMethod.uriSaveFile(PreviewActivity.this, imgUri);
                     }
                     else
                     {

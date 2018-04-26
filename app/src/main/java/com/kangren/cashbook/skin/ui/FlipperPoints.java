@@ -1,7 +1,7 @@
 package com.kangren.cashbook.skin.ui;
 
 import com.kangren.cashbook.R;
-import com.kangren.cashbook.util.Utils;
+import com.kangren.cashbook.util.UtilMethod;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -60,7 +60,7 @@ public class FlipperPoints extends LinearLayout
 
             imageView.setBackgroundResource(imageId);
             imageView.setEnabled(false);
-            addView(imageView, Utils.dp2px(getContext(), width), Utils.dp2px(getContext(), height));
+            addView(imageView, UtilMethod.dp2px(getContext(), width), UtilMethod.dp2px(getContext(), height));
 
             LinearLayout.LayoutParams params = (LayoutParams) imageView.getLayoutParams();
             if (i == size - 1)
@@ -69,7 +69,7 @@ public class FlipperPoints extends LinearLayout
             }
             else
             {
-                params.setMargins(0, 0, Utils.dp2px(getContext(), margin), 0);
+                params.setMargins(0, 0, UtilMethod.dp2px(getContext(), margin), 0);
             }
 
         }
