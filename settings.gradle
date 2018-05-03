@@ -1,1 +1,1 @@
-include ':app', ':skin', ':data', ':fresco'
+include ':app', ':skin', ':data'
